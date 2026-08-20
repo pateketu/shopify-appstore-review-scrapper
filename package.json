@@ -1,0 +1,23 @@
+{
+  "name": "shopify-appstore-review-scrapper",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "scrape": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pateketu/shopify-appstore-review-scrapper.git"
+  },
+  "author": "Keutl Patel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pateketu/shopify-appstore-review-scrapper/issues"
+  },
+  "homepage": "https://github.com/pateketu/shopify-appstore-review-scrapper#readme",
+  "description": "",
+  "dependencies": {
+    "cheerio": "^1.2.0"
+  }
+}
