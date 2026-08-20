@@ -14,8 +14,9 @@ function usageAndExit(message) {
     console.error(message);
   }
   console.error(
-    "Usage: node index.js <app-handle> [output.csv]\n" +
-      "Example: node index.js location-inventory-info"
+    "Usage: node index.js <app-handle> [filename.csv]\n" +
+      "Example: node index.js location-inventory-info\n" +
+      "CSV files are written to the exports/ folder."
   );
   process.exit(1);
 }
@@ -198,9 +199,13 @@ async function main() {
     usageAndExit(error.message);
   }
 
-  const outputPath = path.resolve(
-    process.argv[3] || path.join(process.cwd(), `${handle}-reviews.csv`)
-  );
+  const exportsDir = path.join(process.cwd(), "exports");
+  fs.mkdirSync(exportsDir, { recursive: true });
+
+  const filename = process.argv[3]
+    ? path.basename(process.argv[3])
+    : `${handle}-reviews.csv`;
+  const outputPath = path.join(exportsDir, filename);
 
   const reviews = await scrapeAllReviews(handle);
   fs.writeFileSync(outputPath, toCsv(reviews), "utf8");
